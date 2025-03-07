@@ -1,0 +1,36 @@
+<!-- hoteles/templates/hoteles/search_rooms.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Buscar Habitaciones</title>
+</head>
+<body>
+    <h1>Buscador de Habitaciones</h1>
+
+    <!-- Formulario de búsqueda -->
+    <form method="GET" action="">
+        {{ form.as_p }}
+        <button type="submit">Buscar</button>
+    </form>
+
+    <hr>
+
+    <!-- Resultados de la búsqueda -->
+    <h2>Resultados</h2>
+    <ul>
+    {% for habitacion in habitaciones %}
+        <li>
+            <strong>{{ habitacion.hotel.nombre }} ({{ habitacion.hotel.ciudad }})</strong><br>
+            Tipo: {{ habitacion.tipo }}<br>
+            Capacidad: {{ habitacion.capacidad }} personas<br>
+            Precio: {{ habitacion.precio }}<br>
+            <!-- A futuro, aquí podría ir un botón "Reservar" -->
+        </li>
+        <hr>
+    {% empty %}
+        <p>No se encontraron habitaciones con los criterios ingresados.</p>
+    {% endfor %}
+    </ul>
+</body>
+</html>
